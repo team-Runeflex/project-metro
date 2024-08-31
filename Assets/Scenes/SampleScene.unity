@@ -663,7 +663,8 @@ GameObject:
   - component: {fileID: 2011267548}
   - component: {fileID: 2011267547}
   - component: {fileID: 2011267549}
-  m_Layer: 0
+  - component: {fileID: 2011267550}
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -783,8 +784,6 @@ MonoBehaviour:
   xAxis: 0
   jumpForce: 4.6
   JumpCooldown: 1
-  dashCooldown: 0.5
-  dashForce: 100
 --- !u!58 &2011267548
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -833,8 +832,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e7c61d807d85b4386551b840c8b9ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PCD: {fileID: 0}
   health: 0
   might: 1
+--- !u!114 &2011267550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011267542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90caad0912a5a924f95c0b93623e7938, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dashSpeed: 20
+  dashDuration: 0.2
+  dashCooldown: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
