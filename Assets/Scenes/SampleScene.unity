@@ -783,6 +783,8 @@ MonoBehaviour:
   xAxis: 0
   jumpForce: 4.6
   JumpCooldown: 1
+  dashCooldown: 0.5
+  dashForce: 100
 --- !u!58 &2011267548
 CircleCollider2D:
   m_ObjectHideFlags: 0
