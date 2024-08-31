@@ -32,7 +32,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void LateUpdate()
-    {        
+    {
         timeCheck += Time.deltaTime;
         if (timeCheck > JumpCooldown || isGrounded == true)
         {
@@ -41,12 +41,6 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
                 
             }
-        }
-        else
-        {
-            if(Input.GetKeyDown(KeyCode.C))
-                Debug.Log(timeCheck);
-
         }
     }
 
@@ -67,4 +61,5 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         isGrounded = false;
     }
+    
 }
