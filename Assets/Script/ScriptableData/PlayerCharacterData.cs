@@ -3,6 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "PlayerData", menuName = "ScriptableData/PlayerData", order = int.MaxValue)]
 public class PlayerCharacterData : ScriptableObject
 {
+
+    //플레이어 캐릭터에 따른 스킬 같은걸 선택하기 위한 id
+    [SerializeField] 
+    private int id;
+    public int Id{ get => id; set => id  = value;}
+    
     //플레이어 캐릭터 데이터
     [SerializeField]
     private float health;
