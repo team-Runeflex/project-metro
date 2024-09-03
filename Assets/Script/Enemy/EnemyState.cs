@@ -11,4 +11,9 @@ public class EnemyState : MonoBehaviour
     {
         health = ESD.Health;
     }
+
+    public void TakeDamage(float damage)
+    {
+        health -= damage;
+    }
 }
