@@ -26,6 +26,11 @@ public class PlayerAttack : MonoBehaviour
                 }
                 curTime = coolTime;
             }
+
+            if (Input.GetKeyDown(KeyCode.V))
+            {
+                
+            }
         }
         else
         {
@@ -37,10 +42,5 @@ public class PlayerAttack : MonoBehaviour
     {
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(pos.position, boxSize);
-    }
-
-    public void Attack()
-    {
-        
     }
 }

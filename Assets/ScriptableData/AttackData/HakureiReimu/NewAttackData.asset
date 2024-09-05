@@ -9,12 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c9698c88abf2e341af3cc39dd70b494, type: 3}
-  m_Name: HakureiReimu
+  m_Script: {fileID: 11500000, guid: 285402c45b120c6428de1b86adab69c6, type: 3}
+  m_Name: NewAttackData
   m_EditorClassIdentifier: 
-  id: 0
-  health: 100
-  might: 0
-  defaultAttackData: {fileID: 11400000, guid: 315d0a7b95e22d74db68b290c77982c5, type: 2}
-  defaultRangedData: {fileID: 0}
-  skills: []
+  charEnum: 0
