@@ -31,5 +31,9 @@ namespace Script.ScriptableDataScript
         [SerializeField]
         private bool isRanged;
         public bool IsRanged { get => isRanged; set => isRanged = value; }
+
+        [SerializeField]
+        private GameObject rangedPrefab;
+        public GameObject RangedPrefab { get => rangedPrefab; set => rangedPrefab = value; }
     }
 }

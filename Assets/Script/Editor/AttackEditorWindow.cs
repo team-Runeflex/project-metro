@@ -9,8 +9,25 @@ using UnityEditor.Experimental;
 
 public class AttackEditorWindow : EditorWindow
 {
+    private const string IdKeyPrefix = "Id";
     private string attackDataName = "NewAttackData";
+    private int lastAssignedID = -1;
+    private Sprite icon;
 
+    public static int GetNextID(CharacterEnum charEnum)
+    {
+        string key = IdKeyPrefix + charEnum.ToString();
+        int lastID = EditorPrefs.GetInt(key, 0);
+        int newID = lastID + 1;
+        EditorPrefs.SetInt(key, newID);
+        return newID;
+    }
+
+    public static void ResetID(CharacterEnum charEnum)
+    {
+        string key = IdKeyPrefix + charEnum.ToString();
+        EditorPrefs.SetInt(key, 0);
+    }
 
     string basePath = "Assets/ScriptableData/AttackData/";
 
@@ -30,10 +47,24 @@ public class AttackEditorWindow : EditorWindow
 
         selectedCharacter = (CharacterEnum)EditorGUILayout.EnumPopup("Using Character", selectedCharacter);
 
+        icon = (Sprite)EditorGUILayout.ObjectField("Sprite", icon, typeof(Sprite), false);
+        
+        
         if (GUILayout.Button("Create AttackData ScriptableObject"))
         {
             // 경로에서 공백을 없애고 생성
             CreateAttackScriptableObject<AttackData>("Assets/ScriptableData/AttackData/");
+        }
+
+        if (GUILayout.Button("Reset ID for selected Enum"))
+        {
+            ResetID(selectedCharacter);
+            Debug.Log($"ID for {selectedCharacter} has been reset.");
+        }
+
+        if (lastAssignedID != -1)
+        {
+            GUILayout.Label($"Last Created ID: {lastAssignedID}", EditorStyles.boldLabel);
         }
     }
 
@@ -41,12 +72,16 @@ public class AttackEditorWindow : EditorWindow
     {
         // ScriptableObject 생성
         T asset = ScriptableObject.CreateInstance<T>();
+        
 
         if (asset is AttackData attackData)
         {
+            lastAssignedID = GetNextID(selectedCharacter);
+            attackData.Id = lastAssignedID;
+            attackData.AttackName = attackDataName;
             attackData.CharEnum = selectedCharacter;
-
-            string folderPath = basePath + selectedCharacter.ToString() + "/";
+            attackData.Icon = icon;
+            string folderPath = basePath + selectedCharacter + "/";
 
             folderPath = folderPath.Trim();
 
