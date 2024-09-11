@@ -30,6 +30,8 @@ public class AttackEditorWindow : EditorWindow
     }
 
     string basePath = "Assets/ScriptableData/AttackData/";
+    private bool isRangedAttack;
+    private GameObject rangedPrefabs;
 
     [MenuItem("Tools/AttackEditorWindow")]
     private static void ShowWindow()
@@ -48,7 +50,13 @@ public class AttackEditorWindow : EditorWindow
         selectedCharacter = (CharacterEnum)EditorGUILayout.EnumPopup("Using Character", selectedCharacter);
 
         icon = (Sprite)EditorGUILayout.ObjectField("Sprite", icon, typeof(Sprite), false);
-        
+
+        isRangedAttack = EditorGUILayout.Toggle("isRanged", isRangedAttack);
+
+        if (isRangedAttack)
+        {
+            rangedPrefabs = (GameObject)EditorGUILayout.ObjectField("Ranged Prefabs", rangedPrefabs, typeof(GameObject), true);
+        }
         
         if (GUILayout.Button("Create AttackData ScriptableObject"))
         {
@@ -81,6 +89,8 @@ public class AttackEditorWindow : EditorWindow
             attackData.AttackName = attackDataName;
             attackData.CharEnum = selectedCharacter;
             attackData.Icon = icon;
+            attackData.IsRanged = isRangedAttack;
+            attackData.RangedPrefab = rangedPrefabs;
             string folderPath = basePath + selectedCharacter + "/";
 
             folderPath = folderPath.Trim();
