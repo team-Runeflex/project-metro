@@ -16,7 +16,7 @@ MonoBehaviour:
   health: 100
   might: 0
   defaultAttackData: {fileID: 0}
-  defaultRangedData: {fileID: 0}
+  defaultRangedData: {fileID: 11400000, guid: 1fd2460082d78b642894370d35f19516, type: 2}
   skills:
-  - {fileID: 11400000, guid: d787f63664dd71f418db994053434c92, type: 2}
   - {fileID: 0}
+  - {fileID: 11400000, guid: 1fd2460082d78b642894370d35f19516, type: 2}
