@@ -903,6 +903,7 @@ MonoBehaviour:
   xAxis: 0
   jumpForce: 4.6
   JumpCooldown: 1
+  lastVector: 
 --- !u!58 &2011267548
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -984,7 +985,7 @@ MonoBehaviour:
   coolTime: 0.1
   pos: {fileID: 1918878781}
   boxSize: {x: 1.414, y: 1.414}
-  defaultDamage: 0
+  defaultDamage: 1
   playerData: {fileID: 11400000, guid: 37e9f904d30770446b94684638f6fb11, type: 2}
   PrefabsParent: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
