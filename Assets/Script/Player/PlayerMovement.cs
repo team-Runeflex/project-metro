@@ -13,6 +13,8 @@ public class PlayerMovement : MonoBehaviour
     float timeCheck = 0;
     public float JumpCooldown = 0;
     private bool isGrounded;
+    [HideInInspector]
+    public String lastVector = "Right";
     
     private void Start()
     {
@@ -54,6 +56,19 @@ public class PlayerMovement : MonoBehaviour
         rb.linearVelocity = new Vector2(speed * xAxis, rb.linearVelocity.y);
     }
 
+    // 플레이어의 현재 방향을 확인하여 lastVector 값을 업데이트하는 메서드
+    public void UpdateLastVector()
+    {
+        if (xAxis >= 0.1f)
+        {
+            lastVector = "right";
+        }
+        else if (xAxis <= -0.1f)
+        {
+            lastVector = "left";
+        }
+    }
+    
     void Jump()
     {
         Debug.Log(123);
