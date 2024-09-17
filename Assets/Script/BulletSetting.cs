@@ -6,7 +6,7 @@ public class BulletSetting : MonoBehaviour
     private CapsuleCollider2D collider;
     public PlayerMovement playerMovement; // PlayerMovement 스크립트에서 플레이어의 정보를 가져옴
     private Rigidbody2D rb;
-    private bool lastVector = true;
+    private string lastVector;
     public float destroyTime = 3f; // 발사체가 사라질 시간 (초 단위)
 
     private void Awake()
@@ -16,26 +16,16 @@ public class BulletSetting : MonoBehaviour
         collider = GetComponent<CapsuleCollider2D>();
 
         // 플레이어의 방향을 미리 설정해둠
-        UpdateLastVector();
+        playerMovement.UpdateLastVector();
     }
 
-    // 플레이어의 현재 방향을 확인하여 lastVector 값을 업데이트하는 메서드
-    private void UpdateLastVector()
-    {
-        if (playerMovement.xAxis >= 0.1f)
-        {
-            lastVector = true;
-        }
-        else if (playerMovement.xAxis <= -0.1f)
-        {
-            lastVector = false;
-        }
-    }
+
 
     private void FixedUpdate()
     {
         // 방향 업데이트
-        UpdateLastVector();
+        playerMovement.UpdateLastVector();
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -50,15 +40,16 @@ public class BulletSetting : MonoBehaviour
     // 발사체가 활성화될 때 호출되는 메서드
     private void OnEnable()
     {
-        UpdateLastVector(); // 발사체 활성화 시에도 방향 업데이트
+        playerMovement.UpdateLastVector();
+        // 발사체 활성화 시에도 방향 업데이트
 
-        if (lastVector)
+        if (playerMovement.lastVector == "right")
         {
             // 오른쪽 방향
             gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
             rb.linearVelocity = new Vector2(10, 0); // 오른쪽으로 발사
         }
-        else
+        else if (playerMovement.lastVector == "left")
         {
             // 왼쪽 방향
             gameObject.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
