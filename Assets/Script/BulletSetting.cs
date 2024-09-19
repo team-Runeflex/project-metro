@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class BulletSetting : MonoBehaviour
 {
-    private CapsuleCollider2D collider;
     public PlayerMovement playerMovement; // PlayerMovement 스크립트에서 플레이어의 정보를 가져옴
     private Rigidbody2D rb;
     private string lastVector;
@@ -13,7 +12,6 @@ public class BulletSetting : MonoBehaviour
     {
         playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<CapsuleCollider2D>();
 
         // 플레이어의 방향을 미리 설정해둠
         playerMovement.UpdateLastVector();
