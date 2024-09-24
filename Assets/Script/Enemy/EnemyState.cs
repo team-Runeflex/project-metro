@@ -6,6 +6,7 @@ public class EnemyState : MonoBehaviour
     [Header("Enemy Data")]
     public EnemyData ESD; // 적 데이터 (체력, 이동 속도 등)
     public float health;
+    public GameObject player;
 
     private Rigidbody2D rigid;
     private SpriteRenderer spriteRenderer;
@@ -24,6 +25,11 @@ public class EnemyState : MonoBehaviour
 
     private Coroutine thinkCoroutine;
     private bool isTurning = false;
+    
+    
+    
+    [HideInInspector]
+    public bool meetPlayer = false;
 
     private void Awake()
     {
@@ -42,32 +48,46 @@ public class EnemyState : MonoBehaviour
 
     private void FixedUpdate()
     {
-        // 이동 처리
-        rigid.linearVelocity = new Vector2(nextMove * ESD.MoveSpeed, rigid.linearVelocity.y);
-
-        // Raycast 시작 위치 계산 (오프셋 적용)
-        Vector2 frontVec = new Vector2(rigid.position.x + nextMove * raycastOffset.x, rigid.position.y + raycastOffset.y);
-
-        // Raycast 시각화 (디버깅 용도)
-        Debug.DrawRay(frontVec, Vector2.down * raycastDistance, Color.red);
-
-        // Raycast 실행
-        RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector2.down, raycastDistance, platformLayerMask);
-
-        // 디버깅: Raycast가 감지했는지 로그 출력
-        if (rayHit.collider != null)
+        if (!meetPlayer)
         {
-            //Debug.Log("Raycast Hit: " + rayHit.collider.name);
+            // 이동 처리
+            rigid.linearVelocity = new Vector2(nextMove * ESD.MoveSpeed, rigid.linearVelocity.y);
+
+            // Raycast 시작 위치 계산 (오프셋 적용)
+            Vector2 frontVec = new Vector2(rigid.position.x + nextMove * raycastOffset.x,
+                rigid.position.y + raycastOffset.y);
+
+            // Raycast 시각화 (디버깅 용도)
+            Debug.DrawRay(frontVec, Vector2.down * raycastDistance, Color.red);
+
+            // Raycast 실행
+            RaycastHit2D rayHit = Physics2D.Raycast(frontVec, Vector2.down, raycastDistance, platformLayerMask);
+
+            // 디버깅: Raycast가 감지했는지 로그 출력
+            if (rayHit.collider != null)
+            {
+                //Debug.Log("Raycast Hit: " + rayHit.collider.name);
+            }
+            else
+            {
+                Debug.Log("Raycast Missed");
+            }
+
+            // 플랫폼이 없으면 즉시 방향 전환
+            if (rayHit.collider == null && !isTurning)
+            {
+                ChangeDirectionImmediate();
+            }
         }
         else
         {
-            Debug.Log("Raycast Missed");
-        }
-
-        // 플랫폼이 없으면 즉시 방향 전환
-        if (rayHit.collider == null && !isTurning)
-        {
-            ChangeDirectionImmediate();
+            Vector3 distance = player.transform.position - transform.position;
+            Vector3 dir = distance.normalized;
+            float fDist = distance.magnitude;
+            if (fDist > ESD.MoveSpeed * Time.deltaTime)
+            {
+                transform.position += dir * (ESD.MoveSpeed * Time.deltaTime);
+            }
         }
     }
 
@@ -109,7 +129,7 @@ public class EnemyState : MonoBehaviour
     // 랜덤 방향 선택 (-1 또는 1 또는 0)
     private int RandomDirection()
     {
-        return Random.Range(0, 2);
+        return Random.Range(-1, 1);
     }
 
     // 다음 이동 방향 설정 및 스프라이트 방향 변경

@@ -54,10 +54,18 @@ public class PlayerDash : MonoBehaviour
         }
         else
         {
-            // 만약 방향키 입력이 없을 경우 캐릭터의 현재 바라보는 방향으로 설정
-            dashDirection = transform.localScale.x < 0 ? Vector2.left : Vector2.right;
+            // 방향키 입력이 없을 경우 캐릭터의 현재 바라보는 방향으로 설정
+            if (transform.localScale.x < 0)
+            {
+                dashDirection = Vector2.left;
+            }
+            else
+            {
+                dashDirection = Vector2.right;
+            }
         }
     }
+
 
     void Dash()
     {
