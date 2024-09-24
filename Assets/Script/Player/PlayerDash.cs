@@ -10,11 +10,13 @@ public class PlayerDash : MonoBehaviour
     private float dashTimeLeft;
     private float lastDashTime;
 
+    private PlayerMovement playerMovement;
     private Rigidbody2D rb;
     private Vector2 dashDirection;
 
     void Start()
     {
+        playerMovement = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerMovement>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -42,11 +44,11 @@ public class PlayerDash : MonoBehaviour
 
         // 대쉬 방향 설정 (현재 캐릭터가 바라보고 있는 방향으로 대쉬)
         float horizontalInput = Input.GetAxisRaw("Horizontal");
-        if (horizontalInput < 0)
+        if (playerMovement.lastVector == "left")
         {
             dashDirection = Vector2.left;
         }
-        else if (horizontalInput > 0)
+        else if (playerMovement.lastVector == "right")
         {
             dashDirection = Vector2.right;
         }

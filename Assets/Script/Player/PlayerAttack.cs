@@ -11,6 +11,7 @@ public class PlayerAttack : MonoBehaviour
     public float defaultDamage;
     public PlayerCharacterData playerData;
     public Transform PrefabsParent;
+    public int bulletNumber = 50;
     
     
     private void Update()
@@ -35,9 +36,17 @@ public class PlayerAttack : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.V))
             {
-                AttackRanged();
-                curTime = coolTime;
-
+                if (bulletNumber != 0)
+                {
+                    bulletNumber--;
+                    AttackRanged();
+                    curTime = coolTime;
+                }
+                else if (bulletNumber == -1)
+                {
+                    AttackRanged();
+                    curTime = coolTime;
+                }
             }
         }
         

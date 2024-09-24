@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 115893235}
   - component: {fileID: 115893234}
   - component: {fileID: 115893236}
+  - component: {fileID: 115893237}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -250,7 +251,8 @@ Transform:
   m_LocalPosition: {x: 2, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 538671260}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &115893234
@@ -279,7 +281,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &115893235
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -340,6 +342,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ESD: {fileID: 11400000, guid: 69ad0ab4582cfa5438173320c1b94208, type: 2}
   health: 0
+  nextMove: 0
+  raycastDistance: 0.5
+  raycastOffset: {x: 0.5, y: -0.1}
+  platformLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+--- !u!114 &115893237
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 115893231}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57da76c5eecc7b54085e1e6bb17b0893, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycastDistance: 0.5
+  raycastOffset: {x: 0.5, y: -0.2}
+  platformLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -491,6 +516,74 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 2011267546}
+--- !u!1 &538671259
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 538671260}
+  - component: {fileID: 538671261}
+  m_Layer: 6
+  m_Name: SearchPlayer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &538671260
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538671259}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 115893233}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &538671261
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 538671259}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 3
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -590,7 +683,7 @@ GameObject:
   - component: {fileID: 818561618}
   - component: {fileID: 818561617}
   - component: {fileID: 818561622}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: TempTile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -643,7 +736,7 @@ CompositeCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
@@ -1209,7 +1302,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   xAxis: 0
-  jumpForce: 4.6
+  jumpForce: 5
   JumpCooldown: 1
   lastVector: 
 --- !u!58 &2011267548
@@ -1290,12 +1383,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 719f3f04b35a0894fa2837a7a12c1f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coolTime: 0.1
+  coolTime: 0.3
   pos: {fileID: 1918878781}
   boxSize: {x: 1.414, y: 1.414}
   defaultDamage: 1
   playerData: {fileID: 11400000, guid: 37e9f904d30770446b94684638f6fb11, type: 2}
   PrefabsParent: {fileID: 0}
+  bulletNumber: 20
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
