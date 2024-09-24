@@ -17,3 +17,4 @@ MonoBehaviour:
   attackName: 
   icon: {fileID: 0}
   isRanged: 0
+  rangedPrefab: {fileID: 0}

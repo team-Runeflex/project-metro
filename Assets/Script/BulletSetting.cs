@@ -53,6 +53,12 @@ public class BulletSetting : MonoBehaviour
             gameObject.transform.rotation = Quaternion.Euler(0f, 0f, -90f);
             rb.linearVelocity = new Vector2(-10, 0); // 왼쪽으로 발사
         }
+        else
+        {
+            gameObject.transform.rotation = Quaternion.Euler(0f, 0f, 90f);
+            rb.linearVelocity = new Vector2(10, 0); // 오른쪽으로 발사
+            
+        }
 
         // destroyTime 후에 발사체 삭제
         Invoke("DestroyBullet", destroyTime);

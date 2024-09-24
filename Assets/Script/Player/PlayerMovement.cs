@@ -31,10 +31,6 @@ public class PlayerMovement : MonoBehaviour
     {
         GetInputs();
         Move();
-    }
-
-    private void LateUpdate()
-    {
         timeCheck += Time.deltaTime;
         if (timeCheck > JumpCooldown || isGrounded == true)
         {
@@ -45,6 +41,12 @@ public class PlayerMovement : MonoBehaviour
             }
         }
     }
+
+    private void FixedUpdate()
+    {
+        UpdateLastVector();
+    }
+    
 
     void GetInputs()
     {
