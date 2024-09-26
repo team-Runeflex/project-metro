@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class EnemyState : MonoBehaviour
 {
@@ -28,7 +30,6 @@ public class EnemyState : MonoBehaviour
     
     
     
-    [HideInInspector]
     public bool meetPlayer = false;
 
     private void Awake()
@@ -91,6 +92,28 @@ public class EnemyState : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        if (!meetPlayer)
+        {
+            if (nextMove == 1)
+            {
+                transform.localScale = new Vector3(1, 1, 1);
+            }
+            else if (nextMove == -1)
+                transform.localScale = new Vector3(-1, 1, 1);
+        }
+        else
+        {
+            if (player.transform.position.x > transform.position.x)
+                transform.localScale = new Vector3(1, 1, 1);
+            else
+            {
+                transform.localScale = new Vector3(-1, 1, 1);
+            }
+        }
+    }
+
     // 체력 감소 함수
     public void TakeDamage(float damage)
     {
@@ -129,7 +152,7 @@ public class EnemyState : MonoBehaviour
     // 랜덤 방향 선택 (-1 또는 1 또는 0)
     private int RandomDirection()
     {
-        return Random.Range(-1, 1);
+        return Random.Range(-1, 2);
     }
 
     // 다음 이동 방향 설정 및 스프라이트 방향 변경
