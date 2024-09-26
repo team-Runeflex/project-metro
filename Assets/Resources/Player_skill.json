@@ -1,0 +1,13 @@
+{
+  "characters": [
+    {
+      "name" : "Hakurei Reimu",
+      "skills": ["Ying Yang Orb", "Dream Sea"]
+    },
+    {
+      "name" : "Kirisame Marisa",
+      "skills": ["Nondirectional Laser", "Stardust Missile"]
+    }
+  ]
+}
+
