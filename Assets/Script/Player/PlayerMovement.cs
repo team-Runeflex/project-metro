@@ -3,6 +3,7 @@ using System.Numerics;
 using Unity.VisualScripting;
 using UnityEngine;
 using Vector2 = UnityEngine.Vector2;
+using Vector3 = UnityEngine.Vector3;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -39,7 +40,7 @@ public class PlayerMovement : MonoBehaviour
                 Jump();
                 
             }
-        }
+        } 
     }
 
     private void FixedUpdate()
@@ -50,12 +51,23 @@ public class PlayerMovement : MonoBehaviour
 
     void GetInputs()
     {
-        xAxis = Input.GetAxisRaw("Horizontal");
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            xAxis = -1;
+        }
+        else if (Input.GetKey(KeyCode.RightArrow))
+        {
+            xAxis = 1;
+        }
+        else
+        {
+            xAxis = 0;
+        }
     }
 
     void Move()
     {
-        rb.linearVelocity = new Vector2(speed * xAxis, rb.linearVelocity.y);
+            rb.linearVelocity = new Vector2(speed * xAxis, rb.linearVelocity.y);
     }
 
     // 플레이어의 현재 방향을 확인하여 lastVector 값을 업데이트하는 메서드
@@ -64,10 +76,12 @@ public class PlayerMovement : MonoBehaviour
         if (xAxis >= 0.1f)
         {
             lastVector = "right";
+            transform.localScale = new Vector3(1, 1, 1);
         }
         else if (xAxis <= -0.1f)
         {
             lastVector = "left";
+            transform.localScale = new Vector3(-1, 1, 1);
         }
     }
     

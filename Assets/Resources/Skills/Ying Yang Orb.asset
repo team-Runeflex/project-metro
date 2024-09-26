@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 669ae0e65f5e1d04baed3f1f42c33239, type: 3}
+  m_Name: Ying Yang Orb
+  m_EditorClassIdentifier: 
+  skillName: Ying Yang Orb
+  icon: {fileID: 0}
+  cooldown: 5
+  skillType: 0
+  damage: 10
