@@ -168,4 +168,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 0}
   speed: 10
-  destroyTime: 0.1
+  destroyTime: 4

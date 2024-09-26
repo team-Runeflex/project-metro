@@ -39,8 +39,8 @@ public class PlayerCharacterData : ScriptableObject
     }
 
     [SerializeField]
-    private List<AttackData> skills;
-    public List<AttackData> Skills { get => skills; set => skills = value; }    
+    private Skill[] skills;
+    public Skill[] Skills { get => skills; set => skills = value; }    
 
 
     // Unity Editor에서 값을 변경할 때 실행됨

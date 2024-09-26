@@ -10,9 +10,10 @@ public class PlayerAttack : MonoBehaviour
     public Vector2 boxSize;
     public float defaultDamage;
     public PlayerCharacterData playerData;
-    public Transform PrefabsParent;
     public int bulletNumber = 50;
-    public Transform bulletSpawnPoint;
+
+    [Header("Skill Settings")]
+    public Skill[] skills;
 
     private void Update()
     {
@@ -52,6 +53,15 @@ public class PlayerAttack : MonoBehaviour
         {
             curTime -= Time.deltaTime;
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            UseSkill(0);
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            UseSkill(1);
+        }
     }
 
     private void OnDrawGizmos()
@@ -59,4 +69,23 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.color = Color.blue;
         Gizmos.DrawWireCube(pos.position, boxSize);
     }
+
+    /// <summary>
+    /// 스킬 사용할 때 씁미다.
+    /// </summary>
+    /// <param name="index">스킬 인덱스</param>
+    /// <param name="target">상대를 정하는 것 (가까이 있는적)은 사용</param>
+    public void UseSkill(int index, GameObject target = null)
+    {
+        if (index < skills.Length && skills[index])
+        {
+            Skill skill = skills[index];
+            skill.SkillAction(this.gameObject, target);
+        }
+        else
+        {
+            Debug.LogWarning("스킬 인덱스가 유효하지 않거나 스킬이 할당되지 않았습니다.");
+        }
+    }
+
 }
