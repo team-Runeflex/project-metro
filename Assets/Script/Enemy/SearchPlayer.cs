@@ -15,6 +15,11 @@ public class SearchPlayer : MonoBehaviour
         state = transform.parent.GetComponentInParent<EnemyState>();
     }
 
+    private void Start()
+    {
+        player = state.player;
+    }
+
     private void Update()
     {
         if (Vector3.Distance(player.transform.position, transform.position) <= searchDistance)
