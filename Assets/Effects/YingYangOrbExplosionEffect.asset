@@ -9,12 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c9698c88abf2e341af3cc39dd70b494, type: 3}
-  m_Name: Hakurei Reimu
+  m_Script: {fileID: 11500000, guid: 244dd9b1745440b7b69c4469d0a9a0a1, type: 3}
+  m_Name: YingYangOrbExplosionEffect
   m_EditorClassIdentifier: 
-  id: 0
-  health: 100
-  might: 0
-  defaultAttackData: {fileID: 0}
-  defaultRangedData: {fileID: 11400000, guid: 1fd2460082d78b642894370d35f19516, type: 2}
-  skills: []
+  damage: 10
+  explosionRadius: 5

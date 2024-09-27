@@ -34,6 +34,7 @@ public class EnemyState : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         // 초기화
         health = ESD.Health;
         rigid = GetComponent<Rigidbody2D>();

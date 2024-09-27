@@ -1,13 +1,17 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "ScriptableObject/Skill/Ying Yang Orb")]
-public class YinYangOrb : Skill
+public class YinYangOrb : ProjectileSkill
 {
-    public float damage;
+    public Sprite image;
 
 
-    public override void SkillAction(GameObject user, GameObject target = null)
+    public override void SkillAction(GameObject caster, GameObject target)
     {
-        Debug.Log("YinYangOrb");
+        // 발사체 생성
+        GameObject orb = Instantiate(projectilePrefab, caster.transform.position, Quaternion.identity);
+        Rigidbody2D rb = orb.GetComponent<Rigidbody2D>();
+
+
     }
 }

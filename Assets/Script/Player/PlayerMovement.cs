@@ -87,7 +87,6 @@ public class PlayerMovement : MonoBehaviour
     
     void Jump()
     {
-        Debug.Log(123);
         timeCheck = 0;
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         isGrounded = false;

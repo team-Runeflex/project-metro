@@ -15,6 +15,11 @@ public class PlayerAttack : MonoBehaviour
     [Header("Skill Settings")]
     public Skill[] skills;
 
+    private void Start()
+    {
+        skills = playerData.Skills;
+    }
+
     private void Update()
     {
         if (curTime <= 0)
@@ -58,6 +63,7 @@ public class PlayerAttack : MonoBehaviour
         {
             UseSkill(0);
         }
+
         if (Input.GetKeyDown(KeyCode.S))
         {
             UseSkill(1);
@@ -77,15 +83,15 @@ public class PlayerAttack : MonoBehaviour
     /// <param name="target">상대를 정하는 것 (가까이 있는적)은 사용</param>
     public void UseSkill(int index, GameObject target = null)
     {
-        if (index < skills.Length && skills[index])
+        if (index < skills.Length && skills[index] != null)
         {
             Skill skill = skills[index];
-            skill.SkillAction(this.gameObject, target);
+            skill.SkillAction(this.gameObject, target); // 방향 인자 없이 호출
+            curTime = coolTime; // 스킬 사용 후 쿨타임 설정
         }
         else
         {
             Debug.LogWarning("스킬 인덱스가 유효하지 않거나 스킬이 할당되지 않았습니다.");
         }
     }
-
 }

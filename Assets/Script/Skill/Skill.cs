@@ -21,9 +21,38 @@ public abstract class Skill : ScriptableObject
     [SerializeField]
     private float cooldown;
     public float Cooldown { get => cooldown; set => cooldown = value; }
+
+    private float cooldownTimer;
+    private bool cooldownActive;
+    
     [SerializeField]
     private SkillType skillType;
     public SkillType SkillType { get => skillType; set => skillType = value; }
+    [SerializeField]
+    private float speed;
+    public float Speed { get => speed; set => speed = value; }
+
+    [SerializeField]
+    private float damage;
+    public float Damage { get => damage; set => damage = value; }
+    
+    [SerializeField]
+    private SkillEffectBase[] skillEffects;
+    public SkillEffectBase[] SkillEffects { get => skillEffects; set => skillEffects = value; }
+
+    
+    
     
     public abstract void SkillAction(GameObject user, GameObject target = null);
+    private void HandleCooldown()
+    {
+        // 쿨다운 처리 로직
+        cooldownTimer -= Time.deltaTime;
+        if (cooldownTimer <= 0)
+        {
+            cooldownTimer = 0;
+            cooldownActive = true;
+        }
+    }
+
 }

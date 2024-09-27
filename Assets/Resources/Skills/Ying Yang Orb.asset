@@ -16,4 +16,9 @@ MonoBehaviour:
   icon: {fileID: 0}
   cooldown: 5
   skillType: 0
+  speed: 10
   damage: 10
+  skillEffects:
+  - {fileID: 11400000, guid: 013023dc2ef35934fb2c203871425ea6, type: 2}
+  projectilePrefab: {fileID: 4158165279914635781, guid: bd55bd2b46df77e4e87d1ee7e88abef7, type: 3}
+  image: {fileID: 0}
