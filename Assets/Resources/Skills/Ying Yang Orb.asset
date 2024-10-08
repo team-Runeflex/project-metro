@@ -20,5 +20,7 @@ MonoBehaviour:
   damage: 10
   skillEffects:
   - {fileID: 11400000, guid: 013023dc2ef35934fb2c203871425ea6, type: 2}
+  enemyDetection: 0
   projectilePrefab: {fileID: 4158165279914635781, guid: bd55bd2b46df77e4e87d1ee7e88abef7, type: 3}
+  deleteTime: 5
   image: {fileID: 0}

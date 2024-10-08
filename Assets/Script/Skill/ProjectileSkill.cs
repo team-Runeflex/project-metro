@@ -5,6 +5,10 @@ using UnityEngine;
 public class ProjectileSkill : Skill
 {
     public GameObject projectilePrefab; // 발사할 프리팹
+
+    [SerializeField]
+    private float deleteTime;
+    public float DeleteTime { get => deleteTime; set => deleteTime = value; }
     
     public override void SkillAction(GameObject user, GameObject target)
     {

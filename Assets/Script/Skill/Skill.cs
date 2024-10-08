@@ -40,6 +40,10 @@ public abstract class Skill : ScriptableObject
     private SkillEffectBase[] skillEffects;
     public SkillEffectBase[] SkillEffects { get => skillEffects; set => skillEffects = value; }
 
+    [SerializeField]
+    private float enemyDetection;
+    public float EnemyDetection { get => enemyDetection; set => enemyDetection = value; }
+
     
     
     
@@ -54,5 +58,10 @@ public abstract class Skill : ScriptableObject
             cooldownActive = true;
         }
     }
+
+    /*protected GameObject NearestEnemy()
+    {
+        
+    }*/
 
 }
