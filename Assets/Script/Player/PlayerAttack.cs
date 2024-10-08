@@ -34,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
                     {
                         collider.GetComponent<EnemyState>().TakeDamage(defaultDamage);
                         curTime = coolTime;
-                        break; // 하나의 적에게만 데미지를 주고 쿨타임 설정
+                        //break; // 하나의 적에게만 데미지를 주고 쿨타임 설정
                     }
                 }
             }

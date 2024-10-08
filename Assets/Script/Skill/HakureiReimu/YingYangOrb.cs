@@ -6,6 +6,7 @@ public class YinYangOrb : ProjectileSkill
     public Sprite image;
 
 
+
     public override void SkillAction(GameObject caster, GameObject target)
     {
         // 발사체 생성
