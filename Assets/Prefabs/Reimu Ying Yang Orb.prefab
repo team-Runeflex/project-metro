@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5922382301583181991}
   - component: {fileID: 5440222273940167484}
   - component: {fileID: 5682254683089910237}
+  - component: {fileID: 4382689301694304}
   m_Layer: 0
   m_Name: Reimu Ying Yang Orb
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -6.5602765, y: -0.004829794, z: 0}
-  m_LocalScale: {x: 0.3, y: 0.3, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -214,7 +215,7 @@ TrailRenderer:
   m_SortingLayer: 0
   m_SortingOrder: -1
   m_Time: 0.2
-  m_PreviewTimeScale: 0.5
+  m_PreviewTimeScale: 1
   m_Parameters:
     serializedVersion: 3
     widthMultiplier: 1
@@ -297,3 +298,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rollSpeed: 1000
+--- !u!114 &4382689301694304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4158165279914635781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 055a03a7079d56c42a10b561137c0665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

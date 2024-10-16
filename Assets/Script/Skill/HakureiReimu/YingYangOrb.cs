@@ -4,15 +4,13 @@ using UnityEngine;
 public class YinYangOrb : ProjectileSkill
 {
     public Sprite image;
-
+    
 
 
     public override void SkillAction(GameObject caster, GameObject target)
     {
         // 발사체 생성
-        GameObject orb = Instantiate(projectilePrefab, caster.transform.position, Quaternion.identity);
+        GameObject orb = Instantiate(ProjectilePrefab, caster.transform.position, Quaternion.identity);
         Rigidbody2D rb = orb.GetComponent<Rigidbody2D>();
-
-
     }
 }
